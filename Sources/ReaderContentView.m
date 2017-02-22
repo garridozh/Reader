@@ -113,7 +113,7 @@ static inline CGFloat zoomScaleThatFits(CGSize target, CGSize source)
 	CGFloat iw = 0.0f; CGFloat ih = 0.0f; // Content width and height insets
 
 	CGSize boundsSize = self.bounds.size; CGSize contentSize = self.contentSize; // Sizes
-
+    boundsSize.height -= 64;
 	if (contentSize.width < boundsSize.width) iw = ((boundsSize.width - contentSize.width) * 0.5f);
 
 	if (contentSize.height < boundsSize.height) ih = ((boundsSize.height - contentSize.height) * 0.5f);
@@ -133,7 +133,7 @@ static inline CGFloat zoomScaleThatFits(CGSize target, CGSize source)
 		self.showsHorizontalScrollIndicator = NO;
 		self.contentMode = UIViewContentModeRedraw;
 		self.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-		self.backgroundColor = [UIColor clearColor];
+		self.backgroundColor = [UIColor grayColor];
 		self.autoresizesSubviews = NO;
 		self.clipsToBounds = NO;
 		self.delegate = self;
@@ -150,7 +150,7 @@ static inline CGFloat zoomScaleThatFits(CGSize target, CGSize source)
 			theContainerView.userInteractionEnabled = NO;
 			theContainerView.contentMode = UIViewContentModeRedraw;
 			theContainerView.autoresizingMask = UIViewAutoresizingNone;
-			theContainerView.backgroundColor = [UIColor whiteColor];
+			theContainerView.backgroundColor = [UIColor grayColor];
 
 #if (READER_SHOW_SHADOWS == TRUE) // Option
 

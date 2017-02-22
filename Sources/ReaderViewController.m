@@ -357,7 +357,10 @@
 
 	self.view.backgroundColor = [UIColor grayColor]; // Neutral gray
 
-	UIView *fakeStatusBar = nil; CGRect viewRect = self.view.bounds; // View bounds
+	UIView *fakeStatusBar = nil;
+    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 64, self.view.bounds.size.width, self.view.bounds.size.height);
+    
+    CGRect viewRect = frame; // View bounds
 
 	if ([self respondsToSelector:@selector(edgesForExtendedLayout)]) // iOS 7+
 	{
@@ -398,7 +401,7 @@
 	[self.view addSubview:mainPagebar];
 #endif
 
-	if (fakeStatusBar != nil) [self.view addSubview:fakeStatusBar]; // Add status bar background view
+//	if (fakeStatusBar != nil) [self.view addSubview:fakeStatusBar]; // Add status bar background view
 
 	UITapGestureRecognizer *singleTapOne = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
 	singleTapOne.numberOfTouchesRequired = 1; singleTapOne.numberOfTapsRequired = 1; singleTapOne.delegate = self;
